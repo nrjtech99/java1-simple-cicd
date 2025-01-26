@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building AJ project..'
+                bat 'mvn clean install'
             }
         }
         stage('Test') {
