@@ -1,11 +1,13 @@
 pipeline {
-    agent any
+    agent {
+        dockerfile true
+    }
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building AJ project..'
-                bat 'mvn clean install'
+                sh 'echo myEnv=$myEnv and myEnv2=$myEnv2'
             }
         }
         stage('Test') {
