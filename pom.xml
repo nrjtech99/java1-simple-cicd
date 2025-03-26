@@ -53,7 +53,7 @@
     <distributionManagement>
         <repository>
             <id>my-repo</id>
-            <url>https://github.com/nrjtech99/java1-simple-cicd.git</url>
+            <url>git@github.com:nrjtech99/java1-simple-cicd.git</url>
         </repository>
     </distributionManagement>
 </project>
