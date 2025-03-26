@@ -13,6 +13,9 @@
         <module>common</module>
         <module>subscriber</module>
     </modules>
+    <scm>
+        <developerConnection>scm:git:git@github.com:nrjtech99/java1-simple-cicd.git</developerConnection>
+    </scm>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -34,6 +37,12 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.1.1</version>
+            </plugin>
+
         </plugins>
     </build>
 
