@@ -4,7 +4,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>java1-simple-cicd</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>publisher</module>
@@ -13,7 +13,7 @@
     </modules>
     <scm>
         <developerConnection>scm:git:git@github.com:nrjtech99/java1-simple-cicd.git</developerConnection>
-        <tag>1.0.4-SNAPSHOT</tag>
+        <tag>HEAD</tag>
   </scm>
 
     <properties>

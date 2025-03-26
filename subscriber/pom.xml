@@ -4,11 +4,11 @@
     <parent>
         <groupId>org.example</groupId>
         <artifactId>java1-simple-cicd</artifactId>
-        <version>1.0.4</version>
+        <version>1.0.5-SNAPSHOT</version>
     </parent>
 
     <artifactId>subscriber</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>common</artifactId>
-            <version>1.0.4</version>
+            <version>1.0.5-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
