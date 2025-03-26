@@ -36,6 +36,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.3.2</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -43,12 +44,17 @@
                 <version>3.1.1</version>
                 <configuration>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <releaseVersion>${project.version}</releaseVersion>
-                    <developmentVersion>${project.version}</developmentVersion>
-                    <tag>${project.version}</tag>
+                    <releaseVersion>1.0.1</releaseVersion>
+                    <developmentVersion>1.0.2-SNAPSHOT</developmentVersion>
+                    <tag>1.0.1</tag>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
+    <distributionManagement>
+        <repository>
+            <id>my-repo</id>
+            <url>https://github.com/nrjtech99/java1-simple-cicd.git</url>
+        </repository>
+    </distributionManagement>
 </project>
