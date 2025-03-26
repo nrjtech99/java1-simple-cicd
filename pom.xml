@@ -52,8 +52,8 @@
     </build>
     <distributionManagement>
         <repository>
-            <id>my-repo</id>
-            <url>git@github.com:nrjtech99/java1-simple-cicd.git</url>
+            <id>local-repo</id>
+            <url>file://${project.basedir}/target/repo</url>
         </repository>
     </distributionManagement>
 </project>
