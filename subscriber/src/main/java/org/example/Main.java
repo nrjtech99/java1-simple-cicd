@@ -22,7 +22,7 @@ public class Main {
     // add command listener to print after application starts
     @EventListener(ApplicationReadyEvent.class)
     public void onApplicationEvent(ApplicationReadyEvent event) {
-        System.out.println("Application started successfully.");
+        System.out.println("Application started successfully !!!");
         System.out.println(dbEntity.getDBEntity());
     }
 }
