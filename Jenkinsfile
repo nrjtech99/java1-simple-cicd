@@ -43,6 +43,7 @@ pipeline {
 
         stage('Release') {
             steps {
+                echo 'Releasing...'
                 bat 'mvn release:prepare release:perform'
             }
         }
