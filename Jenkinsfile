@@ -40,6 +40,14 @@ pipeline {
 
             }
         }
+
+        stage('Release') {
+            steps {
+                bat 'mvn release:prepare release:perform'
+            }
+        }
+
+
     }
 
     post {
