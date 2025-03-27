@@ -14,7 +14,7 @@ pipeline {
                 echo 'Building the project...'
                 script {
 
-                        sh 'mvn clean package'
+                        bat 'mvn clean install'
 
                 }
             }
