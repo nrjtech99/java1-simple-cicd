@@ -43,9 +43,10 @@ pipeline {
 
         stage('Release') {
             steps {
-                echo 'Releasing...'
-                bat 'mvn release:prepare release:perform'
-            }
+                echo 'Releasing the project...'
+                withCredentials([sshUserPrivateKey(credentialsId: 'github-ssh-key', keyFileVariable: 'SSH_KEY')]) {
+                    bat 'mvn release:prepare release:perform'
+                }
         }
 
 
