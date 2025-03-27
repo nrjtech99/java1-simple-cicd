@@ -18,9 +18,9 @@ pipeline {
             steps {
                 echo 'Building the project...'
                 script {
-                    withEnv(["JAVA_HOME=${env.JAVA_HOME}", "PATH+MAVEN=${env.MAVEN_HOME}/bin:${env.PATH}"]) {
-                        sh 'mvn clean package -pl publisher -am'
-                    }
+
+                        sh 'mvn clean package'
+
                 }
             }
         }
@@ -28,33 +28,21 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                script {
-                    withEnv(["JAVA_HOME=${env.JAVA_HOME}", "PATH+MAVEN=${env.MAVEN_HOME}/bin:${env.PATH}"]) {
-                        sh 'mvn test -pl publisher'
-                    }
-                }
+
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
-                script {
-                    def imageName = "publisher:latest"
-                    sh "docker build -t ${imageName} -f publisher/Dockerfile ."
-                }
+
             }
         }
 
         stage('Publish Docker Image') {
             steps {
                 echo 'Publishing Docker image...'
-                script {
-                    def imageName = "publisher:latest"
-                    docker.withRegistry('https://your-docker-registry', 'docker-credentials-id') {
-                        sh "docker push ${imageName}"
-                    }
-                }
+
             }
         }
     }
