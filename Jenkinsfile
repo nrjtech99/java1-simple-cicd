@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        MAVEN_HOME = tool name: 'Maven 3.8.4', type: 'maven'
-        JAVA_HOME = tool name: 'JDK 17', type: 'jdk'
-    }
-
     stages {
         stage('Checkout') {
             steps {
