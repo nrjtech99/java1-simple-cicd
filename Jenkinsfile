@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checking out the code...'
-                checkout scm
+                bat 'git checkout master'
             }
         }
 
