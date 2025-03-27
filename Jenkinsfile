@@ -61,8 +61,8 @@ pipeline {
 
     post {
         always {
-            junit '**/target/surefire-reports/*.xml'
-            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
+            echo 'Cleaning up...'
+
         }
     }
 }
