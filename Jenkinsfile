@@ -50,7 +50,7 @@ pipeline {
                             bat 'git tag test-tag'
                             bat 'git push origin test-tag'
                             bat 'git tag -d test-tag'
-                            bat 'mvn release:prepare -Dpush=false release:perform'
+                            bat 'mvn release:prepare release:perform'
                  }
             }
         }
