@@ -46,7 +46,6 @@ pipeline {
                 echo 'Releasing...'
                  withCredentials([sshUserPrivateKey(credentialsId: 'github-ssh-key', keyFileVariable: 'SSH_KEY')]) {
                             bat 'git tag'
-                            bat 'git tag -d 1.0.5-SNAPSHOT'
                             bat 'git tag -d test-tag'
                             bat 'git tag test-tag'
                             bat 'git push origin test-tag'
