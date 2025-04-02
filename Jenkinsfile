@@ -49,6 +49,7 @@ pipeline {
                             bat 'git tag -d 1.0.5-SNAPSHOT'
                             bat 'git tag test-tag'
                             bat 'git push origin test-tag'
+                            bat 'git tag -d test-tag'
                             bat 'mvn release:prepare release:perform'
                  }
             }
