@@ -4,7 +4,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>java1-simple-cicd</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.0.6-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>publisher</module>
