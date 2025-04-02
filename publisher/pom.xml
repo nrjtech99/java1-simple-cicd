@@ -8,7 +8,7 @@
     </parent>
 
     <artifactId>publisher</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -20,7 +20,7 @@
         <developerConnection>scm:git:ssh://git@github.com/nrjtech99/java1-simple-cicd.git</developerConnection>
         <connection>scm:git:ssh://git@github.com/nrjtech99/java1-simple-cicd.git</connection>
         <url>scm:git:ssh://git@github.com/nrjtech99/java1-simple-cicd.git</url>
-        <tag>publisher-1.0.4</tag>
+        <tag>publisher-${project.version}</tag>
     </scm>
 
     <dependencies>
