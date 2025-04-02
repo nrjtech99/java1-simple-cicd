@@ -12,7 +12,7 @@
         <module>subscriber</module>
     </modules>
     <scm>
-        <developerConnection>scm:git:git@github.com:nrjtech99/java1-simple-cicd.git</developerConnection>
+        <developerConnection>scm:git:ssh://git@github.com:nrjtech99/java1-simple-cicd.git</developerConnection>
         <tag>HEAD</tag>
   </scm>
 
