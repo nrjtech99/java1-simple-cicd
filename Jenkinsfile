@@ -50,7 +50,7 @@ pipeline {
                             bat 'git pull --tags'
                             bat 'git pull'
 
-                            bat 'mvn release:prepare'
+                            bat 'mvn release:prepare -DautoVersionSubmodules=false'
                             bat 'mvn release:perform'
                  }
             }
