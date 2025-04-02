@@ -7,7 +7,7 @@
     <version>1.0.14-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>publisher</module>
+<!--        <module>publisher</module>-->
         <module>common</module>
         <module>subscriber</module>
     </modules>
@@ -30,6 +30,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>3.3.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>publisher</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -44,6 +49,7 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <version>3.1.1</version>
                 <configuration>
+                    <updateVersionsToSnapshot>false</updateVersionsToSnapshot>
                     <preparationGoals>clean, install</preparationGoals>
                     <completionGoals>deploy</completionGoals>
                     <autoVersionSubmodules>false</autoVersionSubmodules>
