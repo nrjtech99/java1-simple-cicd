@@ -46,13 +46,11 @@ pipeline {
                 echo 'Releasing...'
                  withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-java1-simple-cicd-key', keyFileVariable: 'SSH_KEY')]) {
                             bat 'git tag'
-                            bat 'git tag test-tag'
-                            bat 'git push origin test-tag'
-                            bat 'git tag -d test-tag'
                             bat 'git pull --tags'
                             bat 'git pull'
 
-                            bat 'mvn release:prepare release:perform'
+                            bat 'mvn release:prepare'
+                            bat 'mvn release:perform'
                  }
             }
         }
