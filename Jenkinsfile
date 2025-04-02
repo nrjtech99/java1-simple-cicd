@@ -45,6 +45,7 @@ pipeline {
             steps {
                 echo 'Releasing...'
                  withCredentials([sshUserPrivateKey(credentialsId: 'github-ssh-key', keyFileVariable: 'SSH_KEY')]) {
+                            bat 'git tag'
                             bat 'mvn release:prepare release:perform'
                  }
             }
