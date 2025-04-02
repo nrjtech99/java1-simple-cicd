@@ -50,8 +50,8 @@ pipeline {
                             bat 'git pull --tags'
                             bat 'git pull'
 
-                            bat 'mvn release:prepare'
-                            bat 'mvn release:perform'
+                            bat 'mvn release:prepare -f publisher/pom.xml'
+                            bat 'mvn release:perform -f publisher/pom.xml'
                  }
             }
         }
