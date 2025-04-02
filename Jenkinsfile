@@ -44,7 +44,7 @@ pipeline {
         stage('Release') {
             steps {
                 echo 'Releasing...'
-                 withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-java1-simple-cicd-key', keyFileVariable: 'SSH_KEY')]) {
+                 withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-id-rsa', keyFileVariable: 'SSH_KEY')]) {
                             bat 'git tag'
 
                             bat 'git pull --tags'
