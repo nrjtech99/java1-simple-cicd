@@ -50,6 +50,9 @@ pipeline {
                             bat 'git tag test-tag'
                             bat 'git push origin test-tag'
                             bat 'git tag -d test-tag'
+                            bat 'git pull --tags'
+                            bat 'git pull'
+
                             bat 'mvn release:prepare release:perform'
                  }
             }
