@@ -9,7 +9,7 @@
     <modules>
 <!--        <module>publisher</module>-->
         <module>common</module>
-        <module>subscriber</module>
+<!--        <module>subscriber</module>-->
     </modules>
     <scm>
         <developerConnection>scm:git:ssh://git@github.com/nrjtech99/java1-simple-cicd.git</developerConnection>
@@ -30,11 +30,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>3.3.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>publisher</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.example</groupId>-->
+<!--            <artifactId>publisher</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -52,7 +52,7 @@
                     <updateVersionsToSnapshot>false</updateVersionsToSnapshot>
                     <preparationGoals>clean, install</preparationGoals>
                     <completionGoals>deploy</completionGoals>
-                    <autoVersionSubmodules>false</autoVersionSubmodules>
+<!--                    <autoVersionSubmodules>false</autoVersionSubmodules>-->
 <!--                    <releaseVersion>${project.version}</releaseVersion>-->
 <!--                    <developmentVersion>${project.version}</developmentVersion>-->
 <!--                    <tag>${project.version}</tag>-->
