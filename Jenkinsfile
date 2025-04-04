@@ -6,6 +6,7 @@ pipeline {
             steps {
                 echo 'Checking out the code...'
                 bat 'git checkout master'
+                bat 'git pull'
             }
         }
 
