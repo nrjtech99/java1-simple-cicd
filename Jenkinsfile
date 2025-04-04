@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo 'Building the project...'
                 script {
-
+                        bat 'git pull'
                         bat 'mvn clean install'
 
                 }
