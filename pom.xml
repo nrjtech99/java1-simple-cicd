@@ -54,7 +54,7 @@
                 <version>3.1.1</version>
                 <configuration>
                     <updateVersionsToSnapshot>false</updateVersionsToSnapshot>
-                    <preparationGoals>clean, install -Drelease.skipJavadoc=true</preparationGoals>
+                    <preparationGoals>clean, install</preparationGoals>
                     <completionGoals>deploy</completionGoals>
 <!--                    <autoVersionSubmodules>false</autoVersionSubmodules>-->
 <!--                    <releaseVersion>${project.version}</releaseVersion>-->
