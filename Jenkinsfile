@@ -50,7 +50,10 @@ pipeline {
 
                             bat 'git pull --tags'
                             bat 'git pull'
-                            bat 'git tag -d $(git tag)'
+
+                            bat '''
+                            for /f "delims=" %i in ('git tag') do git tag -d "%i"
+                            '''
 
                             bat 'mvn release:prepare -DautoVersionSubmodules=false'
                             bat 'mvn release:perform'
