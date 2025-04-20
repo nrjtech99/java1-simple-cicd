@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_HUB_TOKEN     = credentials('DOCKER_HUB_TOKEN')
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -46,6 +42,9 @@ pipeline {
         }
 
         stage('Release') {
+            environment {
+                DOCKER_HUB_TOKEN     = credentials('DOCKER_HUB_TOKEN')
+            }
             steps {
                 echo 'Releasing...'
                  withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-id-rsa', keyFileVariable: 'SSH_KEY')]) {
@@ -54,8 +53,8 @@ pipeline {
                             bat 'git pull --tags'
                             bat 'git pull'
 
-                            bat 'mvn release:prepare -f publisher/pom.xml'
-                            bat 'mvn release:perform -f publisher/pom.xml'
+                            bat 'mvn release:prepare -f publisher/pom.xml -DDOCKER_HUB_TOKEN_PSW=$DOCKER_HUB_TOKEN_PSW'
+                            bat 'mvn release:perform -f publisher/pom.xml -DDOCKER_HUB_TOKEN_PSW=$DOCKER_HUB_TOKEN_PSW'
                  }
             }
         }
