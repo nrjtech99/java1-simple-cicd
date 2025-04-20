@@ -32,7 +32,7 @@ FROM amazoncorretto:17
 WORKDIR /app
 
 # Copy the packaged jar file from the build stage
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=build /app/target/publisher-1.0.10.jar.jar app.jar
 
 # Specify the command to run the application
 CMD ["java", "-jar", "app.jar"]
