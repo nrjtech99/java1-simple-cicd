@@ -54,7 +54,7 @@ pipeline {
                             bat 'git pull --tags'
                             bat 'git pull'
 
-                            bat 'mvn release:prepare -f publisher/pom.xml -DdockerHubPassword=${env.dockerHubPassword} -DdockerHubUser=${env.dockerHubUser}'
+                            bat 'mvn release:clean release:prepare -f publisher/pom.xml -DdockerHubPassword=${env.dockerHubPassword} -DdockerHubUser=${env.dockerHubUser}'
                             bat 'mvn release:perform -f publisher/pom.xml -DdockerHubPassword=${env.dockerHubPassword} -DdockerHubUser=${env.dockerHubUser}'
                  }
             }
