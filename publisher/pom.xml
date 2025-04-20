@@ -77,6 +77,8 @@
                 <username>nranything</username>
                 <password>${env.dockerHubPassword}</password>
 <!--                <useMavenSettingsForAuth>true</useMavenSettingsForAuth>-->
+                <dockerHost>http://localhost:5000</dockerHost>
+                <dockerRegistryUrl>http://localhost:5000</dockerRegistryUrl>
                 <repository>http://localhost:5000/nranything/${project.artifactId}</repository>
                 <tag>${project.version}</tag>
             </configuration>
