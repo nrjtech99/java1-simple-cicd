@@ -6,23 +6,24 @@ WORKDIR /app
 
 # Copy the parent pom.xml and the module pom.xml files
 COPY pom.xml .
-COPY common/pom.xml common/pom.xml
-COPY publisher/pom.xml publisher/pom.xml
-COPY subscriber/pom.xml subscriber/pom.xml
+#COPY common/pom.xml common/pom.xml
+#COPY publisher/pom.xml publisher/pom.xml
+#COPY subscriber/pom.xml subscriber/pom.xml
 
 # Copy the source code of the modules
-COPY common/src ./common/src
-COPY publisher/src ./publisher/src
-COPY subscriber/src ./subscriber/src
+#COPY common/src ./common/src
+COPY src .
+COPY target ./target
+#COPY subscriber/src ./subscriber/src
 
 # Build and install the common module
-RUN mvn clean install -pl common -am
+#RUN mvn clean install -pl common -am
 
 # Download dependencies for the publisher module
-RUN mvn dependency:go-offline -pl publisher -am
+RUN #mvn clean package -DskipTests
 
 # Compile and package the publisher module
-RUN mvn clean package -pl publisher -am
+#RUN mvn clean package -pl publisher -am
 
 # Use the Amazon Corretto 17 image for the runtime stage
 FROM amazoncorretto:17
@@ -31,7 +32,7 @@ FROM amazoncorretto:17
 WORKDIR /app
 
 # Copy the packaged jar file from the build stage
-COPY --from=build /app/publisher/target/*.jar app.jar
+COPY --from=build /app/target/*-SNAPSHOT.jar app.jar
 
 # Specify the command to run the application
 CMD ["java", "-jar", "app.jar"]
