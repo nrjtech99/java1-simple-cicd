@@ -53,8 +53,10 @@ pipeline {
                             bat 'git pull --tags'
                             bat 'git pull'
 
-                            bat 'mvn release:prepare -f publisher/pom.xml -DDOCKER_HUB_TOKEN_PSW=$DOCKER_HUB_TOKEN_PSW'
-                            bat 'mvn release:perform -f publisher/pom.xml -DDOCKER_HUB_TOKEN_PSW=$DOCKER_HUB_TOKEN_PSW'
+                            withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB_TOKEN', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                              bat 'mvn release:prepare -f publisher/pom.xml'
+                              bat 'mvn release:perform -f publisher/pom.xml'
+                            }
                  }
             }
         }
