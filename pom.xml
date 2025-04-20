@@ -61,6 +61,7 @@
                     <updateVersionsToSnapshot>false</updateVersionsToSnapshot>
                     <preparationGoals>clean, install</preparationGoals>
                     <completionGoals>deploy</completionGoals>
+                    <releaseProfiles>release</releaseProfiles>
 <!--                    <autoVersionSubmodules>false</autoVersionSubmodules>-->
 <!--                    <releaseVersion>${project.version}</releaseVersion>-->
 <!--                    <developmentVersion>${project.version}</developmentVersion>-->
