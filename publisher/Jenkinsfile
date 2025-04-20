@@ -47,16 +47,15 @@ pipeline {
             }
             steps {
                 echo 'Releasing...'
-                 withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-id-rsa', keyFileVariable: 'SSH_KEY')]) {
+                 withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-id-rsa', keyFileVariable: 'SSH_KEY'),
+                 usernamePassword(credentialsId: 'DOCKER_HUB_TOKEN', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
                             bat 'git tag'
 
                             bat 'git pull --tags'
                             bat 'git pull'
 
-                            withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB_TOKEN', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-                              bat 'mvn release:prepare -f publisher/pom.xml -DdockerHubPassword=$dockerHubPassword -DdockerHubUser=$dockerHubUser'
-                              bat 'mvn release:perform -f publisher/pom.xml -DdockerHubPassword=$dockerHubPassword -DdockerHubUser=$dockerHubUser'
-                            }
+                            bat 'mvn release:prepare -f publisher/pom.xml -DdockerHubPassword=${env.dockerHubPassword} -DdockerHubUser=${env.dockerHubUser}'
+                            bat 'mvn release:perform -f publisher/pom.xml -DdockerHubPassword=${env.dockerHubPassword} -DdockerHubUser=${env.dockerHubUser}'
                  }
             }
         }
