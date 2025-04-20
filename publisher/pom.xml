@@ -75,7 +75,7 @@
             </executions>
             <configuration>
                 <username>nranything</username>
-                <password>${env.DOCKER_HUB_TOKEN}</password>
+                <password>${env.DOCKER_HUB_TOKEN_PSW}</password>
 <!--                <useMavenSettingsForAuth>true</useMavenSettingsForAuth>-->
                 <repository>registry.hub.docker.com/nranything/${project.artifactId}</repository>
                 <tag>${project.version}</tag>

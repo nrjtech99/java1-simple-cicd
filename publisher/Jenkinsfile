@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_HUB_TOKEN     = credentials('DOCKER_HUB_TOKEN')
+    }
+
     stages {
         stage('Checkout') {
             steps {
