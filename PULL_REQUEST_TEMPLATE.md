@@ -1,50 +1,29 @@
----
-name: Pull Request
-about: Proposing changes for review.
-title: "[TYPE] Brief Description"
-labels:
-  - needs-review
----
+# Pull Request Template
 
-## 🚀 Overview
+## Description
+Provide a clear and concise description of the changes made in this pull request.
 
-* **What this PR does:**
-* **Why this change is important:**
+## Jira Link
+Include the Jira ticket link related to this pull request.
 
----
+## Design doc (if applicable)
 
-## 🔗 Related
+## Dependencies
+List any dependencies required for this pull request, such as other pull requests, INTG tickets, or services.
 
-* **Jira Ticket(s):** [PROJECT-XXXX](https://your-jira-instance.atlassian.net/browse/PROJECT-XXXX)
-* **Related GitHub Issue(s):** #IssueNumber (if applicable)
+## Test Evidence
+Attach screenshots or other evidence showing the results of your tests.
 
----
+## Unit Tests
+- [ ] Unit tests have been added/updated.
+- [ ] Unit tests have been executed successfully.
 
-## ✅ Checks
+## Integration Tests
+- [ ] Integration tests have been added/updated.
+- [ ] Integration tests have been executed successfully.
 
-* [ ] My code follows project style guidelines.
-* [ ] I have performed a self-review of my code.
-* [ ] My changes generate no new warnings.
-* [ ] I have updated documentation (if applicable).
-* [ ] I have added/updated tests for this change.
-
----
-
-## 🧪 Testing
-
-### Test Evidence & Steps
-
-* **How to verify:**
-    1.  [Step 1]
-    2.  [Step 2]
-* **Screenshots/Videos:** (Drag and drop here if applicable)
-
----
-
-## 🤝 Reviewer Checklist
-
-* [ ] Code functionality verified.
-* [ ] Code quality and style reviewed.
-* [ ] Tests are sufficient and pass.
-* [ ] Documentation updated (if necessary).
-* [ ] PR is ready for merge.
+## Checklist
+- [ ] I have added a description of my changes.
+- [ ] I have linked the relevant Jira ticket.
+- [ ] I have provided test evidence.
+- [ ] I have ensured all tests pass successfully.
