@@ -11,6 +11,12 @@ Include the Jira ticket link related to this pull request.
 ## Dependencies
 List any dependencies required for this pull request, such as other pull requests, INTG tickets, or services.
 
+## Release Notes Summary
+Provide a brief summary of the changes for release notes in bullet points. This should be customer-facing if applicable.
+- 
+- 
+- 
+
 ## Test Evidence
 Attach screenshots or other evidence showing the results of your tests.
 
