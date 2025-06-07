@@ -4,10 +4,10 @@
     <parent>
         <groupId>org.example</groupId>
         <artifactId>java1-simple-cicd</artifactId>
-        <version>1.0.13</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>publisher</artifactId>
+    <artifactId>poller</artifactId>
     <version>1.0.10</version>
 
     <properties>
@@ -20,14 +20,13 @@
         <developerConnection>scm:git:ssh://git@github.com/nrjtech99/java1-simple-cicd.git</developerConnection>
         <connection>scm:git:ssh://git@github.com/nrjtech99/java1-simple-cicd.git</connection>
         <url>scm:git:ssh://git@github.com/nrjtech99/java1-simple-cicd.git</url>
-        <tag>publisher-1.0.10</tag>
+        <tag>poller-${project.version}</tag>
     </scm>
 
     <dependencies>
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>common</artifactId>
-            <version>1.0.4</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -38,18 +37,17 @@
 
     <build>
     <plugins>
-<!--        <plugin>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--            <version>3.3.2</version>-->
-<!--            <executions>-->
-<!--                <execution>-->
-<!--                    <goals>-->
-<!--                        <goal>repackage</goal>-->
-<!--                    </goals>-->
-<!--                </execution>-->
-<!--            </executions>-->
-<!--        </plugin>-->
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
         <plugin>
             <groupId>com.spotify</groupId>
             <artifactId>dockerfile-maven-plugin</artifactId>
@@ -74,11 +72,12 @@
                 </execution>
             </executions>
             <configuration>
-                <username>nranything</username>
-                <password>Jntu2002!dr</password>
 <!--                <useMavenSettingsForAuth>true</useMavenSettingsForAuth>-->
                 <repository>registry.hub.docker.com/nranything/${project.artifactId}</repository>
                 <tag>${project.version}</tag>
+                <buildArgs>
+                    <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                </buildArgs>
             </configuration>
         </plugin>
         <plugin>
