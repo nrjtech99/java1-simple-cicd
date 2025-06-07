@@ -1,0 +1,121 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven 3.9.5' // Make sure this Maven version is configured in Jenkins
+        jdk 'JDK 17' // Make sure this JDK version is configured in Jenkins
+    }
+
+    environment {
+        // Optional: Define any environment variables needed for your build
+        // DOCKER_REGISTRY = "your-docker-registry"
+        // DOCKER_CREDENTIALS_ID = "your-docker-credentials-id"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Get some code from a GitHub repository
+                git branch: 'main', url: 'https://github.com/nrjtech99/java1-simple-cicd.git'
+                // It's good practice to checkout the specific module directory if running from parent Jenkinsfile
+                // or ensure this Jenkinsfile is specific to this module.
+                // For a module-specific Jenkinsfile, operating in its root is fine.
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Run Maven build
+                sh "mvn -B -f pom.xml clean package"
+            }
+            post {
+                success {
+                    // Archive the build artifacts
+                    archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run unit tests (already part of 'mvn package', but can be explicit)
+                // sh "mvn -B test"
+                // Optionally, publish test results
+                // junit 'target/surefire-reports/**/*.xml'
+            }
+        }
+
+        stage('Maven Release') {
+            when {
+                branch 'main' // Only run release on the main branch
+            }
+            steps {
+                script {
+                    // Ensure you have credentials configured in Jenkins for Git operations
+                    // Example: sshagent(['your-git-ssh-credentials-id']) {
+                    // For this example, we assume manual versioning or a different release strategy
+                    // as maven-release-plugin can be complex in automated pipelines without interactive input.
+                    // A common approach is to version manually or use a Jenkins plugin for versioning.
+
+                    // This is a simplified release: just tagging and deploying.
+                    // For a full maven-release-plugin sequence (prepare, perform):
+                    // sh "mvn -B release:prepare release:perform"
+                    // However, this often requires interactive input or specific SCM setup.
+
+                    // A more CI-friendly approach for snapshot/release:
+                    // If it's a release version (not SNAPSHOT), then deploy
+                    def pom = readMavenPom file: 'pom.xml'
+                    if (!pom.version.endsWith('SNAPSHOT')) {
+                        echo "Performing a release build and deploy for version ${pom.version}"
+                        // sh "mvn -B deploy -P release" // Assuming a 'release' profile for deployment
+                    } else {
+                        echo "Skipping release for SNAPSHOT version ${pom.version}"
+                    }
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    def pom = readMavenPom file: 'pom.xml'
+                    def imageName = "spring-webflux-demo:${pom.version}"
+                    // Example: docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS_ID) {
+                    //    def customImage = docker.build(imageName, "-f Dockerfile .")
+                    //    customImage.push()
+                    // }
+                    // For local build without pushing to a registry:
+                    sh "docker build -t ${imageName} -f Dockerfile ."
+                    echo "Docker image ${imageName} built."
+                }
+            }
+        }
+
+        stage('Deploy') {
+            // This is a placeholder for your deployment strategy
+            // It could be deploying to Kubernetes, ECS, a simple Docker run, etc.
+            steps {
+                echo "Deploying the application..."
+                // Example: sh "docker run -d -p 8080:8080 spring-webflux-demo:${env.BUILD_ID}"
+                // Replace with your actual deployment commands
+            }
+        }
+    }
+
+    post {
+        // Always run regardless of pipeline status
+        always {
+            echo 'Pipeline finished.'
+            // Clean up workspace
+            // cleanWs()
+        }
+        success {
+            echo 'Pipeline executed successfully!'
+            // mail to: 'team@example.com', subject: "SUCCESS: Pipeline ${currentBuild.fullDisplayName}"
+        }
+        failure {
+            echo 'Pipeline failed.'
+            // mail to: 'team@example.com', subject: "FAILURE: Pipeline ${currentBuild.fullDisplayName}"
+        }
+    }
+}

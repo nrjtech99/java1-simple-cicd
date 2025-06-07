@@ -14,6 +14,7 @@
 <!--        <module>publisher</module>-->
         <module>common</module>
 <!--        <module>subscriber</module>-->
+        <module>spring-webflux-demo</module>
     </modules>
     <scm>
         <developerConnection>scm:git:ssh://git@github.com/nrjtech99/java1-simple-cicd.git</developerConnection>
